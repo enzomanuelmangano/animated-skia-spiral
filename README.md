@@ -4,5 +4,5 @@ This repository showcases a mesmerizing animated spiral created using React Nati
 
 Article: [Animated Spiral with React Native Skia](https://reactiive.io/articles/animated-spiral)
 
-
+https://github.com/user-attachments/assets/b053544d-fabe-46a8-9faa-d2beaaeed339
 
