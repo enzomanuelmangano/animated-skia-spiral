@@ -5,8 +5,8 @@ import {
   Group,
   interpolate,
   Path,
-  Skia,
   SweepGradient,
+  usePathValue,
   vec,
 } from '@shopify/react-native-skia';
 import { StatusBar } from 'expo-status-bar';
@@ -86,8 +86,9 @@ const Spiral = (dimensions?: { width: number; height: number }) => {
     );
   });
 
-  const path = useDerivedValue(() => {
-    const circles = Skia.Path.Make();
+  const path = usePathValue(skPath => {
+    'worklet';
+    skPath.reset();
 
     for (let index = 0; index < spiralCircleCount; index++) {
       const x = animatedSpiralCoordinatesX.value[index];
@@ -102,10 +103,10 @@ const Spiral = (dimensions?: { width: number; height: number }) => {
         Extrapolate.CLAMP,
       );
 
-      circles.addCircle(x, y, radius);
+      skPath.addCircle(x, y, radius);
     }
 
-    return circles;
+    return skPath;
   });
 
   return (
